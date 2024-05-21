@@ -1,26 +1,22 @@
+// App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Products from './components/Products/Products';
+import Cart from './components/Cart/Cart';
+import { AppLayout } from './components/Layout/Layout';
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppLayout>
+        <Routes> {/* Wrap your routes in a <Routes> element */}
+          <Route path="/" element={<Home />} /> {/* Use the 'element' prop to specify the component */}
+          <Route path="/products" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </AppLayout>
+    </Router>
   );
-}
+};
 
 export default App;
