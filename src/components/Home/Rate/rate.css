@@ -1,0 +1,23 @@
+/* Phần Đánh giá từ khách hàng */
+.customer-reviews {
+    padding: 50px 0;
+  }
+  
+  .review-card {
+    text-align: center;
+    padding: 30px;
+    background-color: #fafafa;
+  }
+  
+  .review-rate {
+    margin-bottom: 10px;
+  }
+  
+  .review-text {
+    margin-bottom: 10px;
+  }
+  
+  .review-author {
+    font-weight: bold;
+  }
+  

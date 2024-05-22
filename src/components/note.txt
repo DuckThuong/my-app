@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import {
+  HomeOutlined,
+  ShoppingCartOutlined,
+  ProductOutlined,
+  UserOutlined,
+  QuestionCircleOutlined,
+  DingdingOutlined,
+} from '@ant-design/icons';
+import type { LayoutProps, MenuProps } from 'antd';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Link, Route, Routes } from 'react-router-dom';
+import Home from './../Home/Home';
+import Cart from './../Cart/Cart';
+import NewProduct from './../NewProduct/NewProduct';
+import OnSale from './../Onsale/Onsale';
+import OutOfDate from './../OutOfDate/OutOfDate';
+import NormalUser from './../NormalUser/NormalUser';
+import VIPUser from './../VIPUser/VIPUser';
+import Other from './../Other/Other';
+import './Layout.css'
+const { Header, Content, Footer, Sider } = Layout;
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+function getItem(
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItem[],
+): MenuItem {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  } as MenuItem;
+}
+
+const items: MenuItem[] = [
+  getItem(<Link to="/">Home</Link>, '1', <HomeOutlined  />),
+  getItem(<Link to="/cart">Cart</Link>, '2', <ShoppingCartOutlined  />),
+  getItem('Product', 'sub1', <ProductOutlined />, [
+    getItem(<Link to="/new-product">New</Link>, '3'),
+    getItem(<Link to="/on-sale">On Sale</Link>, '4'),
+    getItem(<Link to="/out-of-date">Out of Date</Link>, '5'),
+  ]),
+  getItem('User', 'sub2', <UserOutlined />, [
+    getItem(<Link to="/normal-user">Normal</Link>, '6'),
+    getItem(<Link to="/vip-user">VIP</Link>, '8'),
+  ]),
+  getItem('Other', '9', <QuestionCircleOutlined />),
+];
+
+export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
+  return (
+    <Layout style={{ minHeight: '100vh' ,margin : 0, padding :0 }}>
+      {/* Menu */}
+      <Sider id='custom-sider' collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+        <div className="demo-logo-vertical">
+            <span className='logo_icon'><DingdingOutlined /></span>
+            <Link className='logo_link' to="/">DuckThuong</Link>
+        </div>
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+      </Sider>
+      {/* Body */}
+      <Layout>
+        <Header className='body_header' style={{ padding: 0, background: colorBgContainer }}>
+                <UserOutlined />
+        </Header>
+        <Content style={{ margin: '0 16px' }}>
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+            className='body_content'
+          >
+              <switch>
+                <Routes>
+                    <Route path="/" Component={Home} />
+                    <Route path="/cart" Component={Cart} />
+                    <Route path="/new-product" Component={NewProduct} />
+                    <Route path="/on-sale" Component={OnSale} />
+                    <Route path="/out-of-date" Component={OutOfDate} />
+                    <Route path="/normal-user" Component={NormalUser} />
+                    <Route path="/vip-user" Component={VIPUser} />
+                    <Route path="/other" Component={Other} />
+                </Routes>
+              </switch>
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          DuckThuong Design ©{new Date().getFullYear()} Created by DuckThuong
+        </Footer>
+      </Layout>
+    </Layout>
+  );
+};
+

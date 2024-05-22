@@ -1,0 +1,56 @@
+/* Home.css */
+
+/* Phần Hero Banner */
+.hero {
+    background-color: #f0f2f5;
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    color: #1890ff;
+    margin-bottom: 20px;
+  }
+  
+  .hero-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .hero-button {
+    margin-top: 20px;
+  }
+  
+  /* Phần Danh sách sản phẩm nổi bật */
+  .featured-products {
+    padding: 50px 0;
+  }
+  
+  .product-card {
+    text-align: center;
+    
+  }
+  .row-feature{
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .product-button {
+    margin-top: 10px;
+  }
+  /* Phần danh sách sản phẩm bán chạy */
+  .best-selling-products{
+    overflow: auto;
+  }
+  /* Phần Giới thiệu về chúng tôi */
+  
+  
+  /* Phần Liên hệ */
+  .contact-us {
+    padding: 50px 0;
+  }
+  
