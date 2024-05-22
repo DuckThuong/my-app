@@ -1,39 +1,12 @@
-/* Home.css */
-
-/* Phần Hero Banner */
-.hero {
-    background-color: #f0f2f5;
-    padding: 100px 0;
-    text-align: center;
-  }
-  
-  .hero-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .hero-title {
-    color: #1890ff;
-    margin-bottom: 20px;
-  }
-  
-  .hero-subtitle {
-    color: #666;
-    margin-bottom: 30px;
-  }
-  
-  .hero-button {
-    margin-top: 20px;
-  }
-  
   /* Phần Danh sách sản phẩm nổi bật */
   .featured-products {
     padding: 50px 0;
   }
-  
   .product-card {
     text-align: center;
-    
+    border: 2px solid black;
+    margin: 5px 5px 5px 5px;
+    background-color: #bd2a80;
   }
   .row-feature{
     overflow: auto;
@@ -46,11 +19,26 @@
   .best-selling-products{
     overflow: auto;
   }
-  /* Phần Giới thiệu về chúng tôi */
-  
-  
+  .carousel-best-seller .slick-dot-bottom{
+    border: 2px solid black;
+
+  }
+  /* Danh sách sản phẩm */
+  .product-list{
+    text-align: center;
+    border: 2px solid black;
+    margin: 5px 5px 5px 5px;
+    background-color: #bd2a80;
+    width: 400px;
+    height: 475px;
+  }
   /* Phần Liên hệ */
-  .contact-us {
+  .contact-us { 
     padding: 50px 0;
   }
-  
+  .product-image{
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid black;
+  }

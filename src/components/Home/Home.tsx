@@ -16,7 +16,8 @@ const Home: React.FC = () => {
       <div className="best-selling-products">
       <h2>Các sản phẩm bán chạy</h2>
       <Carousel 
-          dots={false} 
+          className='carousel-best-seller'
+          dots={true} 
           draggable={true} 
           slidesToShow={3} 
           autoplay 
@@ -26,10 +27,10 @@ const Home: React.FC = () => {
           {products.map(product => (
             <div key={product.id}>
               <Card hoverable className="product-card">
-                <img alt={`Product ${product.name}`} src={`${product.image}`} />
+                <img className='product-image' alt={`Product ${product.name}`} src={`${product.image}`} />
                 <div>
-                  <h3>Product {product.name}</h3>
-                  <p>Description of product {product.description}</p>
+                  <h3> {product.name}</h3>
+                  <p>{product.description}</p>
                   <Button type="primary">View Details</Button>
                 </div>
               </Card>
@@ -41,14 +42,23 @@ const Home: React.FC = () => {
      <section className="featured-products" >
           {/* <Divider orientation="left"><h2>Các sản phẩm nổi bật</h2></Divider> */}
           <h2>Các sản phẩm nổi bật</h2>
-          <Carousel dots={false} draggable={true} slidesToShow={3} autoplay autoplaySpeed={5000} infinite = {true}>
+          <Carousel 
+            className='carousel-best-seller'
+            dots={true} 
+            draggable={true} 
+            slidesToShow={3} 
+            autoplay 
+            autoplaySpeed={5000} 
+            infinite = {true} 
+            arrows = {true}
+            >
           {products.map(product => (
             <div key={product.id}>
               <Card hoverable className="product-card">
-                <img alt={`Product ${product.name}`} src={`${product.image}`} />
+                <img className='product-image' alt={`Product ${product.name}`} src={`${product.image}`} />
                 <div>
-                  <h3>Product {product.name}</h3>
-                  <p>Description of product {product.description}</p>
+                  <h3> {product.name}</h3>
+                  <p>{product.description}</p>
                   <Button type="primary">View Details</Button>
                 </div>
               </Card>
@@ -58,8 +68,9 @@ const Home: React.FC = () => {
         <h2>Danh sách sản phẩm</h2>
         <Row gutter={[16, 16]}>
         {products.map(product => (
-          <Col key={product.id} xs={24} sm={12} lg={8}>
-            <Card hoverable cover={<img alt={product.name} src={product.image} />}>
+          <Col  key={product.id} xs={24} sm={12} lg={8}>
+            <Card className='product-card' hoverable> 
+            <img className='product-image' alt={`Product ${product.name}`} src={`${product.image}`} />
               <div>
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>

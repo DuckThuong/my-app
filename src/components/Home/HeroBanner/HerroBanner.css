@@ -1,0 +1,24 @@
+.hero {
+    background-color: #f0f2f5;
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    color: #1890ff;
+    margin-bottom: 20px;
+  }
+  
+  .hero-subtitle {
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .hero-button {
+    margin-top: 20px;
+  }

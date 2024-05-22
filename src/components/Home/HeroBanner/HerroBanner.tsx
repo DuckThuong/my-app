@@ -1,5 +1,5 @@
 import { Button } from "antd"
-
+import './HerroBanner.css'
 export const HeroBanner = () => {
     return (
         <div>
