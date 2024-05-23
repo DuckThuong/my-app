@@ -1,17 +1,17 @@
-// pages/OnSale.js
-import { RollbackOutlined,  } from '@ant-design/icons';
-import { Button, Card, Col, Row } from 'antd';
+// pages/OutOfDate.js
 import React from 'react';
-import { products } from '../Products';
+import './BestSeller.css'
+import { Button, Card, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-
-const OnSale = () => {
+import { products } from '../Products';
+import { RollbackOutlined } from '@ant-design/icons';
+const OutOfDate = () => {
   return (
-    <div>
+    <div className='content'>
       <div>
       <div  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <h2>New Product</h2>
-          <Button icon= <Link to="/home">{<RollbackOutlined />}</Link>/>
+          <Button icon= <Link to="/home">{<RollbackOutlined/>}</Link>/>
         </div>
         <Row className='row row-product-list' gutter={[16, 16]}>
         {products.map(product => (
@@ -32,4 +32,4 @@ const OnSale = () => {
   );
 };
 
-export default OnSale;
+export default OutOfDate;

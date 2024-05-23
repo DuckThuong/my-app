@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
 import NewProduct from './components/Products/NewProduct/NewProduct';
 import OnSale from './components/Products/Onsale/Onsale';
-import OutOfDate from './components/Products/OutOfDate/OutOfDate';
+import OutOfDate from './components/Products/BestSeller/BestSeller';
 import NormalUser from './components/Update/UpDate';
 import VIPUser from './components/Logout/LogOut';
 import Other from './components/Products/Other/Other';

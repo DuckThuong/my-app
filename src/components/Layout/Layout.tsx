@@ -15,7 +15,7 @@ import Home from './../Home/Home';
 import Cart from './../Cart/Cart';
 import NewProduct from '../Products/NewProduct/NewProduct';
 import OnSale from '../Products/Onsale/Onsale';
-import OutOfDate from '../Products/OutOfDate/OutOfDate';
+import BestSeller from '../Products/BestSeller/BestSeller';
 import UpDate from '../Update/UpDate';
 import LogOut from '../Logout/LogOut';
 import Other from '../Products/Other/Other';
@@ -39,11 +39,11 @@ function getItem(
   } as MenuItem;
 }
 const items: MenuItem[] = [
-  getItem(<Link to="/">Home</Link>, '1', <HomeOutlined  />),
+  getItem(<Link to="/home">Home</Link>, '1', <HomeOutlined  />),
   getItem('Product', '2', <ProductOutlined />, [
     getItem(<Link to="/new-product">New</Link>, '3'),
     getItem(<Link to="/on-sale">On Sale</Link>, '4'),
-    getItem(<Link to="/out-of-date">Out of Date</Link>, '5'),
+    getItem(<Link to="/best-seller">Best Seller</Link>, '5'),
   ]),
   getItem(<Link to="/search">Search</Link>, '6', <SearchOutlined />),
   getItem(<Link to="/cart">Cart</Link>, '7', <ShoppingCartOutlined  />),
@@ -86,11 +86,11 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
           >
               <switch>
                 <Routes>
-                    <Route path="/" Component={Home} />
+                    <Route path="/home" Component={Home} />
                     <Route path="/cart" Component={Cart} />
                     <Route path="/new-product" Component={NewProduct} />
                     <Route path="/on-sale" Component={OnSale} />
-                    <Route path="/out-of-date" Component={OutOfDate} />
+                    <Route path="/best-seller" Component={BestSeller} />
                     <Route path="/Search" Component={Search} />
                     <Route path="/normal-user" Component={UpDate} />
                     <Route path="/vip-user" Component={LogOut} />
