@@ -66,7 +66,6 @@ const Home: React.FC = () => {
             autoplaySpeed={5000} 
             infinite = {true} 
             arrows 
-              
             >
           {products.map(product => (
             <div key={product.id}>

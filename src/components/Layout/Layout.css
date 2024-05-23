@@ -52,5 +52,11 @@ body{
     justify-content: center;
     align-items: center;
 }
-
-
+.layout.layout-footer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: flex-end;
+    margin: 50px auto;
+}

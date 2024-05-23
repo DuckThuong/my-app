@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, LayoutProps, Menu, MenuProps, theme } from 'antd';
 import './Layout.css'
 import {
@@ -10,7 +10,7 @@ import {
   DingdingOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './../Home/Home';
 import Cart from './../Cart/Cart';
 import NewProduct from '../Products/NewProduct/NewProduct';
@@ -20,56 +20,73 @@ import UpDate from '../Update/UpDate';
 import LogOut from '../Logout/LogOut';
 import Other from '../Products/Other/Other';
 import Search from './../Search/Search';
+import LoGin from './../Login/Login';
 const { Header, Content, Footer } = Layout;
 
-
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-const items: MenuItem[] = [
-  getItem(<Link to="/home">Home</Link>, '1', <HomeOutlined  />),
-  getItem('Product', '2', <ProductOutlined />, [
-    getItem(<Link to="/new-product">New</Link>, '3'),
-    getItem(<Link to="/on-sale">On Sale</Link>, '4'),
-    getItem(<Link to="/best-seller">Best Seller</Link>, '5'),
-  ]),
-  getItem(<Link to="/search">Search</Link>, '6', <SearchOutlined />),
-  getItem(<Link to="/cart">Cart</Link>, '7', <ShoppingCartOutlined  />),
-  getItem('Account', 'sub2', <UserOutlined />, [
-    getItem(<Link to="/normal-user">Cập nhật</Link>, '8'),
-    getItem(<Link to="/log-out">Thoát</Link>, '9'),
-  ]),
-  getItem('Other', '10', <QuestionCircleOutlined />),
-];
 export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+    type MenuItem = Required<MenuProps>['items'][number];
+    function getItem(
+      label: React.ReactNode,
+      key: React.Key,
+      icon?: React.ReactNode,
+      children?: MenuItem[],
+    ): MenuItem {
+      return {
+        key,
+        icon,
+        children,
+        label,
+      } as MenuItem;
+    }
+    const items: MenuItem[] = [
+      getItem(<Link to="/home">Home</Link>, '1', <HomeOutlined  />),
+      getItem('Product', '2', <ProductOutlined />, [
+        getItem(<Link to="/new-product">New</Link>, '3'),
+        getItem(<Link to="/on-sale">On Sale</Link>, '4'),
+        getItem(<Link to="/best-seller">Best Seller</Link>, '5'),
+      ]),
+      getItem(<Link to="/search">Search</Link>, '6', <SearchOutlined />),
+      getItem(<Link to="/cart">Cart</Link>, '7', <ShoppingCartOutlined  />),
+      getItem('Account', 'sub2', <UserOutlined />, [
+        getItem(<Link to="/normal-user">Cập nhật</Link>, '8'),
+        getItem(<Link to="/">Thoát</Link>, '9'),
+      ]),
+      getItem('Other', '10', <QuestionCircleOutlined />),
+    ];
+      const {
+        token: { colorBgContainer, borderRadiusLG },
+      } = theme.useToken();
+      const { pathname } = useLocation();
+      const [selectedKey, setSelectedKey] = useState<string>('1');
+      useEffect(() => {
+        const pathToKeyMap: { [key: string]: string } = {
+          '/home': '1',
+          '/new-product': '2',
+          '/on-sale': '2',
+          '/best-seller': '2',
+          '/search': '6',
+          '/cart': '7',
+          '/normal-user': 'sub2',
+          '/vip-user': 'sub2',
+          '/other': '10',
+        };
+        setSelectedKey(pathToKeyMap[pathname] || '');
+      }, [pathname]);
 
   return (
+    <div>    
     <Layout>
         <Header className='body-header' style={{ display: 'flex', alignItems: 'center' }}>
         <div className="demo-logo-vertical">
             <span className='logo_icon'><DingdingOutlined /></span>
-            <Link className='logo_link' to="/">DuckThuong</Link>
+            <Link className='logo_link' to="/home">DuckThuong</Link>
         </div>
         <Menu
           className='menu-options'
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['1']}
+          selectedKeys={[selectedKey]}
           items={items}
           style={{ flex: 1, minWidth: 0 }}
         />
@@ -86,6 +103,7 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
           >
               <switch>
                 <Routes>
+                    <Route path='/' Component = {LoGin}/>
                     <Route path="/home" Component={Home} />
                     <Route path="/cart" Component={Cart} />
                     <Route path="/new-product" Component={NewProduct} />
@@ -99,10 +117,11 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
               </switch>
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>
+      <Footer className='layout layout-footer' style={{ textAlign: 'center' }}>
           DuckThuong Design ©{new Date().getFullYear()} Created by DuckThuong
       </Footer>
     </Layout>
+    </div>
   );
 };
 
