@@ -12,7 +12,7 @@ export const AllProduct = () => {
         </div>
         <Row className='row row-product-list' gutter={[16, 16]} >
             {products.map(product => (
-              <Col>
+              <Col span={8}>
               <div key={product.id}>
                 <Card hoverable className="product-card">
                 <img className='product-image' alt={` ${product.name}`} src={`${product.image}`} />
