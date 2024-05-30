@@ -14,7 +14,7 @@ import { SwapRightOutlined } from '@ant-design/icons';
 // import Rating from '../Home/Rate/rate'
 // import { Contact } from './Contact/Contact';
 import { Link } from 'react-router-dom';
-
+import '../../components/Css/componet.css'
 
 
 
@@ -25,8 +25,8 @@ const Home: React.FC = () => {
         {/* Các sản phẩm mới */}
       <div className="autolist new-product">
       <div className='autolist heading'>
-        <h2>New product</h2>
-        <Button icon= <Link to="/new-product">{<SwapRightOutlined/>}</Link>/>
+        <Link className='link' to="/new-product">New Product</Link>
+        <Button icon= <Link to="/new-product">View Details{<SwapRightOutlined/>}</Link>/>
         </div>
       <Carousel 
           className='carousel carousel-new-product'
@@ -54,8 +54,8 @@ const Home: React.FC = () => {
      {/* Phần Danh sách sản phẩm đang giảm giá */}
      <div className="autolist on-sale-product" >
       <div className='autolist heading'>
-        <h2>Product on sale</h2>
-        <Button icon= <Link to="/on-sale">{<SwapRightOutlined/>}</Link>/>
+        <Link className='link' to="/on-sale">Product on sale</Link>
+        <Button icon= <Link to="/on-sale">View Details{<SwapRightOutlined/>}</Link>/>
       </div>
           <Carousel 
             className='carousel carousel-on-sale'
@@ -84,8 +84,8 @@ const Home: React.FC = () => {
      {/* Phần Danh sách sản phẩm đang bán chạy */}
      <div className="autolist best-seller-product" >
      <div className='autolist heading'>
-        <h2>Best Seller</h2>
-        <Button icon= <Link to="/best-seller">{<SwapRightOutlined/>}</Link>/>
+        <Link className='link' to="/best-seller">Best Seller</Link>
+        <Button icon= <Link to="/best-seller">View Details{<SwapRightOutlined/>}</Link>/>
         </div>
           <Carousel 
             className='carousel carousel-best-seller'

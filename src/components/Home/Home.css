@@ -92,16 +92,12 @@
   justify-content: space-between;
   align-items: center;
 }
-.heading button{
+
+.autolist .heading button{
   border: none;
+  width: 90px;
 }
-.heading button:hover{
-  transform: scale(3,4);
-  -webkit-transform: scale(3,4);
-  -moz-transform: scale(3,4);
-  -ms-transform: scale(3,4);
-  -o-transform: scale(3,4);
-}
+
 .productlist .heading{
   display: flex;
   justify-content: space-between;

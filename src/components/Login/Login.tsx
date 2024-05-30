@@ -3,6 +3,8 @@ import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input } from 'antd';
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
+import '../../components/Css/componet.css'
+
 type FieldType = {
   username?: string;
   password?: string;

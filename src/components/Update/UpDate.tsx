@@ -1,5 +1,6 @@
 // pages/NormalUser.js
 import React from 'react';
+import '../../components/Css/componet.css'
 
 const NormalUser = () => {
   return (

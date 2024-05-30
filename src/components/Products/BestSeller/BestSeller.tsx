@@ -5,13 +5,15 @@ import { Button, Card, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import { products } from '../Products';
 import { RollbackOutlined } from '@ant-design/icons';
+import { SwapRightOutlined } from '@ant-design/icons';
+
 const OutOfDate = () => {
   return (
     <div className='content'>
       <div>
-      <div  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h2>New Product</h2>
-          <Button icon= <Link to="/home">{<RollbackOutlined/>}</Link>/>
+      <div className='heading'  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+         <Link className='link' to="/home">Best Seller</Link>
+          <Button icon= <Link to="/home">Back to Home{<RollbackOutlined/>}</Link>/>
         </div>
         <Row className='row row-product-list' gutter={[16, 16]}>
         {products.map(product => (

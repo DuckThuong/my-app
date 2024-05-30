@@ -8,9 +8,9 @@ import { products } from '../Products';
 const NewProduct = () => {
   return (
     <div>
-      <div  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h2>New Product</h2>
-          <Button icon= <Link to="/home">{<RollbackOutlined />}</Link>/>
+      <div className='heading'  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Link className='link' to="/home">New Product</Link>
+          <Button icon= <Link to="/home">Back to Home{<RollbackOutlined />}</Link>/>
         </div>
         <Row className='row row-product-list' gutter={[16, 16]}>
         {products.map(product => (

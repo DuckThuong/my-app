@@ -17,10 +17,11 @@ import NewProduct from '../Products/NewProduct/NewProduct';
 import OnSale from '../Products/Onsale/Onsale';
 import BestSeller from '../Products/BestSeller/BestSeller';
 import UpDate from '../Update/UpDate';
-import LogOut from '../Logout/LogOut';
 import Other from '../Products/Other/Other';
 import Search from './../Search/Search';
 import LoGin from './../Login/Login';
+import '../../components/Css/componet.css'
+
 const { Header, Content, Footer } = Layout;
 
 export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
@@ -111,7 +112,6 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
                     <Route path="/best-seller" Component={BestSeller} />
                     <Route path="/Search" Component={Search} />
                     <Route path="/normal-user" Component={UpDate} />
-                    <Route path="/vip-user" Component={LogOut} />
                     <Route path="/other" Component={Other} />
                 </Routes>
               </switch>

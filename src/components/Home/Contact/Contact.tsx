@@ -1,5 +1,7 @@
 import { Divider } from "antd"
 import './Contact.css'
+import '../../components/Css/componet.css'
+
 export const Contact = () => {
    return(
     <div>

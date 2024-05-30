@@ -1,5 +1,7 @@
 import { Divider } from 'antd';
 import './about.css'
+import '../../components/Css/componet.css'
+
 export const About = ()=>{
      
         <section className="about-us">

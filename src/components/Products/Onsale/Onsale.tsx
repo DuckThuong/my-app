@@ -4,14 +4,14 @@ import { Button, Card, Col, Row } from 'antd';
 import React from 'react';
 import { products } from '../Products';
 import { Link } from 'react-router-dom';
-
+import './Onsale.css'
 const OnSale = () => {
   return (
     <div>
       <div>
-      <div  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h2>New Product</h2>
-          <Button icon= <Link to="/home">{<RollbackOutlined />}</Link>/>
+      <div className='heading'  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+         <Link className='link' to="/home">Product on sale</Link>
+        <Button icon= <Link to="/home">Back to Home{<RollbackOutlined />}</Link>/>
         </div>
         <Row className='row row-product-list' gutter={[16, 16]}>
         {products.map(product => (

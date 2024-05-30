@@ -1,6 +1,8 @@
 // pages/OutOfDate.js
 import React from 'react';
 import './Search.css'
+import '../../components/Css/componet.css'
+
 const Search = () => {
   return (
     <div className='content'>
