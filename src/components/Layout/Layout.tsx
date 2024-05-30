@@ -76,6 +76,7 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
           '/other': '12',
         };
         setSelectedKey(pathToKeyMap[pathname] || '');
+        window.scrollTo(0, 0);
       }, [pathname]);
 
   return (
