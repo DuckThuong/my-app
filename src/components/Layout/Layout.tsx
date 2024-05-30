@@ -23,7 +23,7 @@ import LoGin from './../Login/Login';
 import '../../components/Css/componet.css'
 import { AllProduct } from './../Products/AllProduct/AllProduct';
 import { ViewDetails } from './../View Details/ViewDetails';
-import { AddProductForm } from './../AddproductForm';
+import { AddProduct } from './../Addproduct';
 
 const { Header, Content, Footer } = Layout;
 
@@ -124,7 +124,7 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
                     <Route path="/best-seller/:id" Component={ViewDetails} />
                     <Route path="/Search" Component={Search} />
                     <Route path="/update-user" Component={UpDate} />
-                    <Route path="/other" Component={AddProductForm} />
+                    <Route path="/other" Component={AddProduct} />
                 </Routes>
               </switch>
         </div>

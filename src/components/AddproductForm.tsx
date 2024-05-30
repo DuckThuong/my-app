@@ -1,6 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Upload } from 'antd';
+import { products } from './Products/Products';
+const { TextArea } = Input;
 
-// Khai báo kiểu dữ liệu cho sản phẩm
+const normFile = (e: any) => {
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
+
+// Định nghĩa kiểu Product
 interface Product {
   id: string;
   name: string;
@@ -8,61 +19,91 @@ interface Product {
   price: string;
   image: string;
 }
-
-export const AddProductForm = () => {
-  const [formData, setFormData] = useState<Product>({
-    id: '',
-    name: '',
-    description: '',
-    price: '',
-    image: ''
-  });
-
-  const [products, setProducts] = useState<Product[]>([]);
-
+export const FormDisabledDemo: React.FC = () => {
+  const [form] = Form.useForm();
+  const [product, setProducts] = useState<Product[]>(products);
   useEffect(() => {
-    const storedProducts = sessionStorage.getItem('products');
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
+    const savedProducts = sessionStorage.getItem('products');
+      if (savedProducts) {
+      setProducts(JSON.parse(savedProducts));
     }
   }, []);
-
-  useEffect(() => {
-    sessionStorage.setItem('products', JSON.stringify(products));
-  }, [products]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newProduct: Product = {
-      ...formData
-    };
-    setProducts(prevProducts => [...prevProducts, newProduct]);
-    // Reset form fields
-    setFormData({
-      id: '',
-      name: '',
-      description: '',
-      price: '',
-      image: ''
-    });
+  const handleSubmit = () => {
+    form.validateFields()
+      .then(values => {
+        const newProduct: Product = {
+          id: values.id,
+          name: values.name,
+          description: values.description,
+          price: values.price,
+          image: values.fileList ? values.fileList[0].url : ''
+        };
+        const updatedProducts = [...products, newProduct];
+        setProducts(updatedProducts);
+        sessionStorage.setItem('products', JSON.stringify(updatedProducts));
+        console.log('Saved data:', updatedProducts);
+      })
+      .catch(errorInfo => {
+        console.log('Failed:', errorInfo);
+      });
+      console.log(products);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="id" placeholder="ID" value={formData.id} onChange={handleChange} />
-      <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
-      <input type="text" name="description" placeholder="Description" value={formData.description} onChange={handleChange} />
-      <input type="text" name="price" placeholder="Price" value={formData.price} onChange={handleChange} />
-      <input type="text" name="image" placeholder="Image URL" value={formData.image} onChange={handleChange} />
-      <button type="submit">Add Product</button>
-    </form>
+    <>
+      <Form
+        form={form}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 14 }}
+        layout="horizontal"
+        style={{ maxWidth: 600 }}
+        onFinish={handleSubmit}
+      >
+        <Form.Item
+          label="Id Product"
+          name="id"
+          rules={[{ required: true, message: 'Please input the ID!' }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Name Product"
+          name="name"
+          rules={[{ required: true, message: 'Please input the name!' }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Description"
+          name="description"
+          rules={[{ required: true, message: 'Please input the description!' }]}
+        >
+          <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item
+          label="Price"
+          name="price"
+          rules={[{ required: true, message: 'Please input the price!' }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Upload"
+          name="fileList"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <Upload action="/upload.do" listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div style={{ marginTop: 8 }}>Upload</div>
+            </div>
+          </Upload>
+        </Form.Item>
+        <Form.Item wrapperCol={{ offset: 4, span: 14 }}>
+          <Button type="primary" htmlType="submit">Upload</Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
