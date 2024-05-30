@@ -1,17 +1,13 @@
-// pages/OutOfDate.js
-import React from 'react';
-import './BestSeller.css'
-import { Button, Card, Col, Row } from 'antd';
-import { Link } from 'react-router-dom';
-import { products } from '../Products';
-import { RollbackOutlined } from '@ant-design/icons';
-
-const OutOfDate = () => {
-  return (
-    <div className='content'>
-      <div>
+import { RollbackOutlined } from "@ant-design/icons"
+import { Button, Card, Col, Row } from "antd"
+import { Link } from "react-router-dom"
+import { products } from "../Products"
+import '../../Css/componet.css'
+export const AllProduct = () => {
+    return(
+        <div>
       <div className='heading'  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-         <Link className='link' to="/home">Best Seller</Link>
+         <Link className='link' to="/home">All Product</Link>
           <Button icon= <Link to="/home">Back to Home{<RollbackOutlined/>}</Link>/>
         </div>
         <Row className='row row-product-list' gutter={[16, 16]} >
@@ -31,8 +27,6 @@ const OutOfDate = () => {
           ))}
       </Row>
         </div>
-    </div>
-  );
-};
+    )
 
-export default OutOfDate;
+}

@@ -17,10 +17,12 @@ import NewProduct from '../Products/NewProduct/NewProduct';
 import OnSale from '../Products/Onsale/Onsale';
 import BestSeller from '../Products/BestSeller/BestSeller';
 import UpDate from '../Update/UpDate';
-import Other from '../Products/Other/Other';
+import Other from '../../Other/Other';
 import Search from './../Search/Search';
 import LoGin from './../Login/Login';
 import '../../components/Css/componet.css'
+import { AllProduct } from './../Products/AllProduct/AllProduct';
+import { ViewDetails } from './../View Details/ViewDetails';
 
 const { Header, Content, Footer } = Layout;
 
@@ -42,17 +44,18 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
     const items: MenuItem[] = [
       getItem(<Link to="/home">Home</Link>, '1', <HomeOutlined  />),
       getItem('Product', '2', <ProductOutlined />, [
-        getItem(<Link to="/new-product">New</Link>, '3'),
-        getItem(<Link to="/on-sale">On Sale</Link>, '4'),
-        getItem(<Link to="/best-seller">Best Seller</Link>, '5'),
+        getItem(<Link to="/all-product">All Products</Link>, '3'),
+        getItem(<Link to="/new-product">New Products</Link>, '4'),
+        getItem(<Link to="/on-sale">On Sale Products</Link>, '5'),
+        getItem(<Link to="/best-seller">Best Seller Products</Link>, '6'),
       ]),
-      getItem(<Link to="/search">Search</Link>, '6', <SearchOutlined />),
-      getItem(<Link to="/cart">Cart</Link>, '7', <ShoppingCartOutlined  />),
-      getItem('Account', 'sub2', <UserOutlined />, [
-        getItem(<Link to="/normal-user">Cập nhật</Link>, '8'),
-        getItem(<Link to="/">Thoát</Link>, '9'),
+      getItem(<Link to="/search">Search</Link>, '7', <SearchOutlined />),
+      getItem(<Link to="/cart">Cart</Link>, '8', <ShoppingCartOutlined  />),
+      getItem('Account', '9', <UserOutlined />, [
+        getItem(<Link to="/update-user">Cập nhật</Link>, '10'),
+        getItem(<Link to="/">Thoát</Link>, '11'),
       ]),
-      getItem('Other', '10', <QuestionCircleOutlined />),
+      getItem(<Link to="/other">Other</Link>, '12', <QuestionCircleOutlined />),
     ];
       const {
         token: { colorBgContainer, borderRadiusLG },
@@ -62,14 +65,15 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
       useEffect(() => {
         const pathToKeyMap: { [key: string]: string } = {
           '/home': '1',
+          '/all-product': '2',
+          '/home/:id': '1',
           '/new-product': '2',
           '/on-sale': '2',
           '/best-seller': '2',
-          '/search': '6',
-          '/cart': '7',
-          '/normal-user': 'sub2',
-          '/vip-user': 'sub2',
-          '/other': '10',
+          '/search': '7',
+          '/cart': '8',
+          '/update-user': '10',
+          '/other': '12',
         };
         setSelectedKey(pathToKeyMap[pathname] || '');
       }, [pathname]);
@@ -107,11 +111,17 @@ export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
                     <Route path='/' Component = {LoGin}/>
                     <Route path="/home" Component={Home} />
                     <Route path="/cart" Component={Cart} />
+                    <Route path="/home/:id" element={<ViewDetails />}/>
+                    <Route path="/all-product" Component={AllProduct} />
+                    <Route path="/all-product/:id" Component={ViewDetails} />
                     <Route path="/new-product" Component={NewProduct} />
+                    <Route path="/new-product/:id" Component={ViewDetails} />
                     <Route path="/on-sale" Component={OnSale} />
+                    <Route path="/on-sale/:id" Component={ViewDetails} />
                     <Route path="/best-seller" Component={BestSeller} />
+                    <Route path="/best-seller/:id" Component={ViewDetails} />
                     <Route path="/Search" Component={Search} />
-                    <Route path="/normal-user" Component={UpDate} />
+                    <Route path="/update-user" Component={UpDate} />
                     <Route path="/other" Component={Other} />
                 </Routes>
               </switch>

@@ -35,7 +35,25 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+/* .list-product{
+  overflow: auto;
+}
+.list-product::-webkit-scrollbar {
+  height: 10px; 
+}
+.list-product::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px; 
+}
 
+.list-product::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px; 
+}
+
+.list-product::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+} */
 .ant-carousel li {
   border: 1px solid #001529;
   color: #001529;
@@ -78,15 +96,7 @@
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-.ant-card-body .product-list-image{
-  border: 1px solid black;
-  margin: 0px auto;
-  height: 300px;
-  width: 400px;
-  overflow: hidden;
-  border: 1px solid black;
-  border-radius: 5px;
-}
+
 .autolist .heading{
   display: flex;
   justify-content: space-between;
@@ -97,12 +107,11 @@
   border: none;
   width: 90px;
 }
-
-.productlist .heading{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.product-list-button{
+  border: none;
+  width: 90px;
 }
+
   /* Phần Danh sách sản phẩm mới */
   .on-sale-product {
     padding: 50px 0;
@@ -121,10 +130,5 @@
     margin-top: 10px;
   }
   /* Phần danh sách sản phẩm bán chạy */
-  .new-product{
-    overflow: auto;
-  }
-
-  /* Phần Liên hệ */
-
   
+  /* Phần Liên hệ */

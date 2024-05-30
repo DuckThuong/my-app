@@ -7,7 +7,7 @@ import NewProduct from './components/Products/NewProduct/NewProduct';
 import OnSale from './components/Products/Onsale/Onsale';
 import OutOfDate from './components/Products/BestSeller/BestSeller';
 import NormalUser from './components/Update/UpDate';
-import Other from './components/Products/Other/Other';
+import Other from './Other/Other';
 import { AppLayout } from './components/Layout/Layout';
 const App: React.FC = () => {
   return (

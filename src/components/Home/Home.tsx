@@ -23,20 +23,20 @@ const Home: React.FC = () => {
   return (
       <div className="home-container">
         {/* Các sản phẩm mới */}
-      <div className="autolist new-product">
+      <div className="autolist list-product">
       <div className='autolist heading'>
         <Link className='link' to="/new-product">New Product</Link>
         <Button icon= <Link to="/new-product">View Details{<SwapRightOutlined/>}</Link>/>
         </div>
       <Carousel 
-          className='carousel carousel-new-product'
-          dots={true} 
-          draggable={true} 
-          slidesToShow={3} 
-          autoplay 
-          autoplaySpeed={5000} 
-          infinite = {true} 
-          arrows = {true}>
+           className='carousel carousel-new-product'
+            dots={true} 
+            draggable={true} 
+            slidesToShow={3} 
+            autoplay 
+            autoplaySpeed={5000} 
+            infinite = {true} 
+            arrows >
           {products.map(product => (
             <div key={product.id}>
               <Card hoverable className="product-card">
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
                 <div>
                   <h3> {product.name}</h3>
                   <p>{product.description}</p>
-                  <Button type="primary">View Details</Button>
+                  <Link to={`/home/${product.id}`}><Button type="primary">View Details</Button></Link>
                 </div>
               </Card>
             </div>
@@ -52,7 +52,7 @@ const Home: React.FC = () => {
         </Carousel>
     </div>
      {/* Phần Danh sách sản phẩm đang giảm giá */}
-     <div className="autolist on-sale-product" >
+     <div className="autolist list-product">
       <div className='autolist heading'>
         <Link className='link' to="/on-sale">Product on sale</Link>
         <Button icon= <Link to="/on-sale">View Details{<SwapRightOutlined/>}</Link>/>
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
                 <div>
                   <h3> {product.name}</h3>
                   <p>{product.description}</p>
-                  <Button type="primary">View Details</Button>
+                  <Link to={`/home/${product.id}`}><Button type="primary">View Details</Button></Link>
                 </div>
               </Card>
             </div>
@@ -82,8 +82,8 @@ const Home: React.FC = () => {
         </Carousel>
         </div>
      {/* Phần Danh sách sản phẩm đang bán chạy */}
-     <div className="autolist best-seller-product" >
-     <div className='autolist heading'>
+     <div className="autolist list-product">
+       <div className='autolist heading'>
         <Link className='link' to="/best-seller">Best Seller</Link>
         <Button icon= <Link to="/best-seller">View Details{<SwapRightOutlined/>}</Link>/>
         </div>
@@ -104,7 +104,7 @@ const Home: React.FC = () => {
                 <div>
                   <h3> {product.name}</h3>
                   <p>{product.description}</p>
-                  <Button type="primary">View Details</Button>
+                  <Link to={`/home/${product.id}`}><Button type="primary">View Details</Button></Link>
                 </div>
               </Card>
             </div>
@@ -114,22 +114,24 @@ const Home: React.FC = () => {
         {/* Phần Danh sách sản phẩm */}
         <div>
         <div  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h2>Product List</h2>
-          <Button icon= <Link to="/best-seller">{<SwapRightOutlined/>}</Link>/>
+            <Link className='link' to="/all-product">Product List</Link>
+            <Button className='product-list-button' icon= <Link to="/all-product">View Details{<SwapRightOutlined/>}</Link>/>
         </div>
         <Row className='row row-product-list' gutter={[16, 16]} >
-        {products.map(product => (
-          <Col className='col col-product-list' key={product.id}>
-            <Card hoverable className='product-card' > 
-            <img className='product-list-image' alt={` ${product.name}`} src={`${product.image}`} />
-              <div>
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <Button type="primary">View Details</Button>
-              </div>
-            </Card>
-          </Col>
-        ))}
+            {products.map(product => (
+              <Col>
+              <div key={product.id}>
+                <Card hoverable className="product-card">
+                <img className='product-image' alt={` ${product.name}`} src={`${product.image}`} />
+                <div>
+                  <h3> {product.name}</h3>
+                  <p>{product.description}</p>
+                  <Link to={`/home/${product.id}`}><Button type="primary">View Details</Button></Link>
+                </div>
+              </Card>
+            </div>
+            </Col>
+          ))}
       </Row>
         </div>
       
